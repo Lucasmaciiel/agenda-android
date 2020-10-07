@@ -2,13 +2,14 @@ package br.com.lmg.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import br.com.lmg.R;
+import br.com.lmg.dao.AlunoDAO;
 import br.com.lmg.ui.model.Aluno;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -16,6 +17,8 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        final AlunoDAO dao = new AlunoDAO();
 
         final EditText campoNome = findViewById(R.id.activity_formulario_nome);
         final EditText campoTelefone = findViewById(R.id.activity_formulario_telefone);
@@ -32,15 +35,17 @@ public class CadastroActivity extends AppCompatActivity {
                 String email = campoEmail.getText().toString();
 
                 Aluno alunoCriado = new Aluno(nome, telefone, email);
-                Toast.makeText(CadastroActivity.this,
-                          alunoCriado.getNome() + "-" +
-                                alunoCriado.getTelefone() + "-" +
-                                alunoCriado.getEmail(),
-                        Toast.LENGTH_LONG).show();
+                dao.salvar(alunoCriado);
+
+                startActivity(new Intent(CadastroActivity.this,
+                        ListaAlunosActivity.class));
 
 //                Toast.makeText(CadastroActivity.this,
-//                        "Salvo com sucesso",
-//                        Toast.LENGTH_SHORT).show();
+//                          alunoCriado.getNome() + "-" +
+//                                alunoCriado.getTelefone() + "-" +
+//                                alunoCriado.getEmail(),
+//                        Toast.LENGTH_LONG).show();
+
 
             }
         });
