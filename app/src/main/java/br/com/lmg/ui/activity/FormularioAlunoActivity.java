@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CadastroActivity extends AppCompatActivity {
+public class FormularioAlunoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +36,17 @@ public class CadastroActivity extends AppCompatActivity {
 
                 Aluno alunoCriado = new Aluno(nome, telefone, email);
                 dao.salvar(alunoCriado);
-
-                startActivity(new Intent(CadastroActivity.this,
-                        ListaAlunosActivity.class));
+                finish();
 
 //                Toast.makeText(CadastroActivity.this,
 //                          alunoCriado.getNome() + "-" +
 //                                alunoCriado.getTelefone() + "-" +
 //                                alunoCriado.getEmail(),
 //                        Toast.LENGTH_LONG).show();
-
-
             }
         });
+
+
 
     }
 }
