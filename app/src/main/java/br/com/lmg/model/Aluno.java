@@ -1,4 +1,4 @@
-package br.com.lmg.ui.model;
+package br.com.lmg.model;
 
 import androidx.annotation.NonNull;
 
