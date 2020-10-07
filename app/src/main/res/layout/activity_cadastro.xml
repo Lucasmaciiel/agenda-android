@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.CadastroActivity">
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText android:id="@+id/activity_formulario_nome"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:inputType="textCapWords"
+        android:hint="Nome"
+        android:layout_height="wrap_content"/>
+
+    <EditText android:id="@+id/activity_formulario_telefone"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:hint="Telefone"
+        android:inputType="phone"
+        android:layout_height="wrap_content"/>
+
+    <EditText android:id="@+id/activity_formulario_email"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/activity_formulario_botao_salvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/cardview_light_background"/>
+</LinearLayout>

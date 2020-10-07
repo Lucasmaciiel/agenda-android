@@ -19,12 +19,12 @@ public class ListaAnotacoesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TextView aluno = new TextView(this);
-        setContentView(R.layout.activity_lista_anotacoes);
+        setContentView(R.layout.activity_lista_alunos);
         setTitle("Anotações");
 
         List<String> alunos = new ArrayList<String>(Arrays.asList("Alex", "Fran", "José", "Lucas", "Maria", "Pedro"));
 
-        ListView listaDeAlunos = (ListView) findViewById(R.id.activity_lista_anotacoes_listView);
+        ListView listaDeAlunos = (ListView) findViewById(R.id.activity_lista_alunos_listView);
         listaDeAlunos.setAdapter(new ArrayAdapter<String>(
                 this,
                  android.R.layout.simple_list_item_1,
