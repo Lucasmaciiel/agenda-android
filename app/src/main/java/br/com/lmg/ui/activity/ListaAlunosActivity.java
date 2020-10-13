@@ -2,17 +2,22 @@ package br.com.lmg.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import br.com.lmg.R;
 import br.com.lmg.dao.AlunoDAO;
+import br.com.lmg.model.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
@@ -24,6 +29,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         TextView aluno = new TextView(this);
         setContentView(R.layout.activity_lista_alunos);
+
+        dao.salva(new Aluno("Lucas", "18997062461", "lucasmaciel@gmail.com"));
+        dao.salva( new Aluno("Michele", "18996747889", "michele@gmail.com"));
 
         setTitle(TITULO_APPBAR);
         configuraFabNovoAluno();
@@ -52,9 +60,21 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void configuraLista() {
         ListView listaDeAlunos = (ListView) findViewById(R.id.activity_lista_alunos_listView);
+        final List<Aluno> alunos = dao.todos();
+
         listaDeAlunos.setAdapter(new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                dao.todos()));
+                alunos));
+        listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+                Aluno alunoEscolhido = alunos.get(posicao);
+//                Log.i("Aluno", "onItemClick: " + alunoEscolhido);
+                Intent vaiParaFormularioActivity = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+                vaiParaFormularioActivity.putExtra("aluno", alunoEscolhido);
+                startActivity(vaiParaFormularioActivity);
+            }
+        });
     }
 }
