@@ -18,7 +18,6 @@ public class Aluno implements Serializable {
     }
 
     public Aluno() {
-
     }
 
     public void setNome(String nome) {
