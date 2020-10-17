@@ -30,13 +30,5 @@
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:layout_height="wrap_content"/>
-
-    <Button android:id="@+id/activity_formulario_botao_salvar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar"
-        android:layout_margin="8dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/cardview_light_background"/>
 </LinearLayout>
 </ScrollView>
