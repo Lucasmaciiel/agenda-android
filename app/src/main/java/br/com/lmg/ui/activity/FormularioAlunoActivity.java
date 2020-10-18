@@ -31,7 +31,6 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-
         inicializacaoDosCampos();
         carregaAluno();
     }
@@ -86,6 +85,11 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         campoEmail = findViewById(R.id.activity_formulario_email);
     }
 
+    public void limpaCampos(){
+        campoNome.setText("");
+        campoEmail.setText("");
+        campoTelefone.setText("");
+    }
 
     private void preencheAluno() {
         String nome = campoNome.getText().toString();

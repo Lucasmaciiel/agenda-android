@@ -17,6 +17,7 @@ public class AlunoDAO {
         aumentaIds();
     }
 
+
     private void aumentaIds() {
         contadorDeIds++;
     }
