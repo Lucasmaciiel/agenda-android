@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoNome;
     private EditText campoTelefone;
     private EditText campoEmail;
+    private Button botaoLimpar;
     final AlunoDAO dao = new AlunoDAO();
     private Aluno aluno;
 
@@ -33,7 +35,21 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         inicializacaoDosCampos();
         carregaAluno();
+        configuraBotaoLimpar();
+
     }
+
+    public void configuraBotaoLimpar(){
+        botaoLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                campoNome.setText("");
+                campoEmail.setText("");
+                campoTelefone.setText("");
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,26 +86,27 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
 
     private void finalizaFormulario() {
-        preencheAluno();
-        if (aluno.temIdValido()) {
-            dao.edita(aluno);
+        if (campoNome.getText().toString().equals("") || campoTelefone.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "Preencha o campo Nome e Telefone", Toast.LENGTH_LONG).show();
         } else {
-            dao.salva(aluno);
+            preencheAluno();
+            if (aluno.temIdValido()) {
+                dao.edita(aluno);
+            } else {
+                dao.salva(aluno);
+            }
+            finish();
         }
-        finish();
     }
 
     private void inicializacaoDosCampos() {
         campoNome = findViewById(R.id.activity_formulario_nome);
         campoTelefone = findViewById(R.id.activity_formulario_telefone);
         campoEmail = findViewById(R.id.activity_formulario_email);
+        botaoLimpar = findViewById(R.id.botao_limpar);
     }
 
-    public void limpaCampos(){
-        campoNome.setText("");
-        campoEmail.setText("");
-        campoTelefone.setText("");
-    }
+
 
     private void preencheAluno() {
         String nome = campoNome.getText().toString();
