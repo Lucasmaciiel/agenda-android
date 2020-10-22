@@ -14,29 +14,32 @@
         android:layout_width="match_parent"
         android:layout_margin="8dp"
         android:inputType="textCapWords"
-        android:hint="Nome"
-        android:layout_height="wrap_content"/>
+        android:hint="@string/nome"
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no" />
 
     <EditText android:id="@+id/activity_formulario_telefone"
         android:layout_width="match_parent"
         android:layout_margin="8dp"
-        android:hint="Telefone"
+        android:hint="@string/telefone"
         android:inputType="phone"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no" />
 
     <EditText android:id="@+id/activity_formulario_email"
         android:layout_width="match_parent"
         android:layout_margin="8dp"
-        android:hint="E-mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/botao_limpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foreground="@drawable/ic_action_limpar_dados"
-         />
+        tools:targetApi="m" />
 
 
 
