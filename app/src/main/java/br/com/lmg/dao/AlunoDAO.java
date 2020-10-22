@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.lmg.model.Aluno;
-import br.com.lmg.ui.activity.ListaAlunosActivity;
 
 public class AlunoDAO {
 

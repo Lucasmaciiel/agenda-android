@@ -1,7 +1,6 @@
 package br.com.lmg.ui.activity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,7 +25,7 @@ import static br.com.lmg.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
-    public static final String TITULO_APPBAR = "Lista de Alunos";
+    private static final String TITULO_APPBAR = "Lista de Alunos";
 
     private final AlunoDAO dao = new AlunoDAO();
     private ListaAlunosAdapter adapter;
@@ -63,13 +62,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 .Builder(this)
                 .setTitle("Removendo aluno")
                 .setMessage("Deseja remover o aluno?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                        Aluno alunoEscolhido = (Aluno) adapter.getItem(menuInfo.position);
-                        remove(alunoEscolhido);
-                    }
+                .setPositiveButton("Sim", (dialogInterface, i) -> {
+                    AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                    Aluno alunoEscolhido = (Aluno) adapter.getItem(menuInfo.position);
+                    remove(alunoEscolhido);
                 })
                 .setNegativeButton("Não", null)
                 .show();
@@ -77,12 +73,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void configuraFabNovoAluno() {
         FloatingActionButton botaoNovoAluno = findViewById(R.id.activity_lista_alunos_fab_novo_aluno);
-        botaoNovoAluno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                abreFormularioParaInsercao();
-            }
-        });
+        botaoNovoAluno.setOnClickListener(view -> abreFormularioParaInsercao());
     }
 
     private void abreFormularioParaInsercao() {
@@ -100,7 +91,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraLista() {
-        ListView listaDeAlunos = (ListView) findViewById(R.id.activity_lista_alunos_listView);
+        ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listView);
         configuraAdapter(listaDeAlunos);
         configuraListenerDeCliquePorItem(listaDeAlunos);
         registerForContextMenu(listaDeAlunos);
@@ -112,13 +103,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraListenerDeCliquePorItem(ListView listaDeAlunos) {
-        listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                Aluno alunoEscolhido = (Aluno) adapterView.getItemAtPosition(posicao);
+        listaDeAlunos.setOnItemClickListener((adapterView, view, posicao, id) -> {
+            Aluno alunoEscolhido = (Aluno) adapterView.getItemAtPosition(posicao);
 //                Log.i("Aluno", "onItemClick: " + alunoEscolhido);
-                abreFormularioParaEdicao(alunoEscolhido);
-            }
+            abreFormularioParaEdicao(alunoEscolhido);
         });
     }
 

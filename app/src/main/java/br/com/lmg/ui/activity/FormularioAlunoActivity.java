@@ -40,13 +40,10 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     }
 
     public void configuraBotaoLimpar(){
-        botaoLimpar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                campoNome.setText("");
-                campoEmail.setText("");
-                campoTelefone.setText("");
-            }
+        botaoLimpar.setOnClickListener(view -> {
+            campoNome.setText("");
+            campoEmail.setText("");
+            campoTelefone.setText("");
         });
     }
 
