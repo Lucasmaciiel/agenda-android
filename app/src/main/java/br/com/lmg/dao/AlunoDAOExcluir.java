@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.com.lmg.model.Aluno;
 
-public class AlunoDAO {
+public class AlunoDAOExcluir {
 
     private final static List<Aluno> alunos = new ArrayList<>();
     private static int contadorDeIds = 1;

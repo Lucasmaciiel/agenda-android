@@ -10,7 +10,7 @@ import androidx.room.Update;
 import br.com.lmg.model.Aluno;
 
 @Dao
-public interface RoomAlunoDao {
+public interface AlunoDao {
 
     @Insert
     void salva(Aluno aluno);

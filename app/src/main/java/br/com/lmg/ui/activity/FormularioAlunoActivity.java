@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import br.com.lmg.R;
 import br.com.lmg.dataBase.AgendaDataBase;
-import br.com.lmg.dataBase.dao.RoomAlunoDao;
+import br.com.lmg.dataBase.dao.AlunoDao;
 import br.com.lmg.model.Aluno;
 
 import static br.com.lmg.ui.activity.ConstantesActivities.CHAVE_ALUNO;
@@ -23,10 +23,11 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private static final String TITULO_APPBAR_EDITA_ALUNO = "Edita aluno";
 
     private EditText campoNome;
+    private EditText campoSobreNome;
     private EditText campoTelefone;
     private EditText campoEmail;
     private Button botaoLimpar;
-    public RoomAlunoDao dao;
+    public AlunoDao dao;
     private Aluno aluno;
 
     @Override
@@ -45,8 +46,10 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     public void configuraBotaoLimpar(){
         botaoLimpar.setOnClickListener(view -> {
             campoNome.setText("");
+            campoSobreNome.setText("");
             campoEmail.setText("");
             campoTelefone.setText("");
+
         });
     }
 
@@ -80,14 +83,15 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void preencheCampos() {
         campoNome.setText(aluno.getNome());
+        campoSobreNome.setText(aluno.getSobrenome());
         campoTelefone.setText(aluno.getTelefone());
         campoEmail.setText(aluno.getEmail());
     }
 
 
     private void finalizaFormulario() {
-        if (campoNome.getText().toString().equals("") || campoTelefone.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "Preencha o campo Nome e Telefone", Toast.LENGTH_LONG).show();
+        if (campoNome.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "Campo (Nome) é obrigatório", Toast.LENGTH_LONG).show();
         } else {
             preencheAluno();
             if (aluno.temIdValido()) {
@@ -101,6 +105,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void inicializacaoDosCampos() {
         campoNome = findViewById(R.id.activity_formulario_nome);
+        campoSobreNome = findViewById(R.id.activity_formulario_sobreNome);
         campoTelefone = findViewById(R.id.activity_formulario_telefone);
         campoEmail = findViewById(R.id.activity_formulario_email);
         botaoLimpar = findViewById(R.id.botao_limpar);
@@ -110,10 +115,12 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void preencheAluno() {
         String nome = campoNome.getText().toString();
+        String sobreNome = campoSobreNome.getText().toString();
         String telefone = campoTelefone.getText().toString();
         String email = campoEmail.getText().toString();
 
         aluno.setNome(nome);
+        aluno.setSobrenome(sobreNome);
         aluno.setTelefone(telefone);
         aluno.setEmail(email);
     }

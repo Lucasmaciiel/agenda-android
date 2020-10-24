@@ -8,14 +8,14 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import br.com.lmg.dataBase.AgendaDataBase;
-import br.com.lmg.dataBase.dao.RoomAlunoDao;
+import br.com.lmg.dataBase.dao.AlunoDao;
 import br.com.lmg.model.Aluno;
 import br.com.lmg.ui.adapter.ListaAlunosAdapter;
 
 public class ListaAlunosView {
 
     private final ListaAlunosAdapter adapter;
-    private final RoomAlunoDao dao;
+    private final AlunoDao dao;
     private Context context;
 
     public ListaAlunosView(Context context) {
