@@ -11,7 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import br.com.lmg.R;
-import br.com.lmg.dao.AlunoDAO;
+import br.com.lmg.dataBase.AgendaDataBase;
+import br.com.lmg.dataBase.dao.RoomAlunoDao;
 import br.com.lmg.model.Aluno;
 
 import static br.com.lmg.ui.activity.ConstantesActivities.CHAVE_ALUNO;
@@ -25,13 +26,16 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoTelefone;
     private EditText campoEmail;
     private Button botaoLimpar;
-    final AlunoDAO dao = new AlunoDAO();
+    public RoomAlunoDao dao;
     private Aluno aluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+        AgendaDataBase dataBase = AgendaDataBase.getInstance(this);
+        dao = dataBase.getRoomAlunoDao();
+
         inicializacaoDosCampos();
         carregaAluno();
         configuraBotaoLimpar();
