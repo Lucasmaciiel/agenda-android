@@ -18,14 +18,6 @@
         android:layout_height="wrap_content"
         android:importantForAutofill="no" />
 
-    <EditText android:id="@+id/activity_formulario_sobreNome"
-        android:layout_width="match_parent"
-        android:layout_margin="8dp"
-        android:inputType="textCapWords"
-        android:hint="@string/sobrenome"
-        android:layout_height="wrap_content"
-        android:importantForAutofill="no" />
-
     <EditText android:id="@+id/activity_formulario_telefone"
         android:layout_width="match_parent"
         android:layout_margin="8dp"
@@ -44,9 +36,9 @@
 
     <Button
         android:id="@+id/botao_limpar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:foreground="@drawable/ic_action_limpar_dados"
+        android:text="Limpar campos"
         tools:targetApi="m" />
 
 
