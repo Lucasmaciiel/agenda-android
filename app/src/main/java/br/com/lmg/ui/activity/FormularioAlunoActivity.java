@@ -26,7 +26,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoTelefone;
     private EditText campoEmail;
     private Button botaoLimpar;
-    public AlunoDao dao;
+    private AlunoDao dao;
     private Aluno aluno;
 
     @Override
@@ -42,7 +42,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     }
 
-    public void configuraBotaoLimpar(){
+    private void configuraBotaoLimpar(){
         botaoLimpar.setOnClickListener(view -> {
             campoNome.setText("");
             campoEmail.setText("");
