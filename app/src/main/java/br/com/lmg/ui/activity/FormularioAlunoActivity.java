@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import br.com.lmg.R;
@@ -40,7 +43,13 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         carregaAluno();
         configuraBotaoLimpar();
 
+        //Máscara do telefone
+        SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(campoTelefone, smf);
+        campoTelefone.addTextChangedListener(mtw);
+
     }
+
 
     private void configuraBotaoLimpar(){
         botaoLimpar.setOnClickListener(view -> {

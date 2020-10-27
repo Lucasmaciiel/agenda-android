@@ -36,9 +36,16 @@
 
     <Button
         android:id="@+id/botao_limpar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:text="@string/limpar_campos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFF"
+        android:textStyle="bold"
         tools:targetApi="m" />
 
 

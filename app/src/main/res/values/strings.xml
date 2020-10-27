@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Agenda</string>
+    <string name="app_name">Agenda de Alunos</string>
     <string name="nome">Nome</string>
     <string name="telefone">Telefone</string>
     <string name="email">E-mail</string>
     <string name="salvar">Salvar</string>
     <string name="remover">Remover</string>
     <string name="limpar_campos">Limpar campos</string>
+    <string name="limpar">Limpar</string>
 </resources>
